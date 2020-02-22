@@ -1,13 +1,13 @@
 ﻿namespace List
 {
-    public class Node
+    public class Node<T>
     {
-        public Node(Notebook element, Node nextElement = null)
+        public Node(T element, Node<T> nextElement = null)
         {
             Element = element;
             NextElement = nextElement;
         }
-        public Notebook Element { get; set; }
-        public Node NextElement { get; set; }
+        public T Element { get; set; }
+        public Node<T> NextElement { get; set; }
     }
 }

@@ -3,16 +3,16 @@ using System.Collections;
 
 namespace List
 {
-    public class CustomList : IEnumerable, ICustomLink
+    public class CustomList<T> : IEnumerable, ICustomList<T>
     {
-        public Node Head { get; private set; }
-        public Node Tail { get; private set; }
+        public Node<T> Head { get; set; }
+        public Node<T> Tail { get; set; }
 
-        public Notebook this[int index]
+        public T this[int index]
         {
             get
             {
-                Node current = Head;
+                Node<T> current = Head;
 
                 int i = 0;
                 while(current != null && i != index)
@@ -24,9 +24,9 @@ namespace List
             }
         }
 
-        public void Add(Notebook value)
+        public virtual void Add(T value)
         {
-            Node newNode = new Node(value, null);
+            Node<T> newNode = AssignmentNode(value);
             if (Head == null)
             {
                 Head = newNode;
@@ -39,10 +39,20 @@ namespace List
            
         }
 
-        public void Delete(Notebook value)
+        protected virtual void SetTail(Node<T> node)
         {
-            Node previous = null;
-            Node current = Head;
+            Tail.NextElement = node;
+        }
+
+        protected virtual Node<T> AssignmentNode(T value)
+        {
+            return new Node<T>(value, null);
+        }
+
+        public virtual void Delete(T value)
+        {
+            Node<T> previous = null;
+            Node<T> current = Head;
 
             while (current != null)
             {
@@ -72,7 +82,7 @@ namespace List
 
         public IEnumerator GetEnumerator()
         {
-            return new CustomListEnumerator(Head);
+            return new CustomListEnumerator<T>(Head);
         }
     }
 }

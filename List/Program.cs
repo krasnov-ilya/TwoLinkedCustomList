@@ -1,4 +1,5 @@
 ﻿using System;
+using List;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,26 +11,31 @@ namespace List
     {
         static void Main(string[] args)
         {
-            var notebookCollection = new CustomList();
-
             var igor = new Notebook(1, "Igor");
-            var vasia = new Notebook(2, "Vasia");
-            var kurlik = new Notebook(3, "KYPJIblK");
-            notebookCollection.Add(igor);
-            notebookCollection.Add(vasia);
-            notebookCollection.Add(kurlik);
+            var vasia = new Notebook(2, "vasia");
+            var kurlik = new Notebook(3, "KYPJIbIK");
+            var acer = new Notebook(2432, "Acer");
+            var asus = new Notebook(4897, "Asus");
 
-            foreach (Notebook notebook in notebookCollection)
-                Console.WriteLine(notebook.Name + "\n");
+            var newList = new TwoLinkedCustomList<Notebook>();
 
-            var pupkin = notebookCollection[1];
-            notebookCollection.Delete(pupkin);
+            newList.Add(igor);
+            newList.Add(vasia);
+            newList.Add(kurlik);
+            newList.Add(acer);
+            newList.Add(asus);
+            foreach (var notebook in newList)
+                Console.WriteLine("{0} {1}", notebook.Name, notebook.SerialNumber);
+
+            newList.Delete(newList[1]);
+            newList.Delete(newList[3]);
+
+            Console.WriteLine();
             Console.WriteLine("===================");
+            Console.WriteLine();
 
-            foreach (Notebook notebook in notebookCollection)
-            {
-                Console.WriteLine(notebook.Name + "\n");
-            }
+            foreach (Notebook notebook in newList)
+                Console.WriteLine("{0} {1}", notebook.Name, notebook.SerialNumber);
             Console.ReadKey();
         }
     }

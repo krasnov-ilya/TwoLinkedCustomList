@@ -3,12 +3,12 @@ using System.Collections;
 
 namespace List
 {
-    public class CustomListEnumerator : IEnumerator
+    public class CustomListEnumerator<T> : IEnumerator
     {
-        private Node head;
-        private Node currentNode;
+        private Node<T> head;
+        private Node<T> currentNode;
 
-        public CustomListEnumerator(Node node)
+        public CustomListEnumerator(Node<T> node)
         {
             head = node;
             currentNode = null;

@@ -45,11 +45,14 @@
   <ItemGroup>
     <Compile Include="CustomList.cs" />
     <Compile Include="CustomListEnumerator.cs" />
-    <Compile Include="ICustomLink.cs" />
+    <Compile Include="ICustomList.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Notebook.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TwoLinkedCustomListEnumerator.cs" />
+    <Compile Include="TwoLinkedCustomList.cs" />
+    <Compile Include="TwoLinkedNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
